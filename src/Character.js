@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import request from 'superagent';
 import './App.css'
 
-export default class Characters extends Component {
+export default class Character extends Component {
     state = {
             characters:[],
-            quotes:[]
         }
     
         componentDidMount = async () => {

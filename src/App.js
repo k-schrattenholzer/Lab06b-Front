@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import Home from './Home.js';
+import Quotes from './Quotes.js';
+import Character from './Character.js';
 
 export default class App extends Component {
   render() {
     return (
       <div>
-        <Home />
+        <Character />
+        <hr/>
+        <Quotes />
       </div>
     )
   }
