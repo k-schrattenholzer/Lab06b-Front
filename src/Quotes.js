@@ -19,8 +19,9 @@ export default class Quotes extends Component {
                 this.state.quotesArr
                 .map(quote => 
                     <div>
-                        <span>{quote.character}</span>
-                        <span>{quote.quote}</span>
+                        <span className="QCharName">{quote.character}: </span>
+                        <span className="QCharQuote">"{quote.quote}"</span>
+                        <hr />
                     </div>
                     )}
             </div>
