@@ -21,9 +21,10 @@ export default class Character extends Component {
                     <div className="CharEl">
                         <span>{char.name}</span>
                         <img src={char.img} alt={char.name}/>
+                        <span>species: {char.species}</span>
                         <span>weapon of choice: {char.weapon}</span>
                         <span>age: {char.age}</span>
-                        <span>gem type:{char.gem_type}</span>
+                        <span>gem type: {char.gem_type}</span>
                     </div>
                     )}
             </div>
