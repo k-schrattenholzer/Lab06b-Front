@@ -33,7 +33,9 @@
 }
 
 img {
-  width: fit-content;
+  width: 200px;
+  height: 300px;
+  object-fit: contain;
 }
 
 body {
@@ -50,5 +52,10 @@ body {
 .CharEl {
   display: flex;
   flex-direction: column;
-  height: 30rem;
+  justify-content: center;
+  margin: 5px;
+  border: 1px dotted black;
+  border-radius: 10%;
+  padding: 1%;
+  align-items: center;
 }
