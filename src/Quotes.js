@@ -14,11 +14,12 @@ export default class Quotes extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="QuoteDiv">
+                <h4>Quotes</h4>
                 {
                 this.state.quotesArr
                 .map(quote => 
-                    <div>
+                    <div className="QuoteEl">
                         <span className="QCharName">{quote.character}: </span>
                         <span className="QCharQuote">"{quote.quote}"</span>
                         <hr />

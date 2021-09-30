@@ -14,11 +14,11 @@ export default class Character extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="CharDiv">
                 {
                 this.state.characters
                 .map(char => 
-                    <div>
+                    <div className="CharEl">
                         <span>{char.name}</span>
                         <img src={char.img} alt={char.name}/>
                         <span>age: {char.age}</span>

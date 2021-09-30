@@ -5,7 +5,8 @@ import Character from './Character.js';
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <div className="Main">
+        <h1>Welcome to the Universe</h1>
         <Character />
         <hr/>
         <Quotes />

@@ -33,5 +33,22 @@
 }
 
 img {
-  width: 150px;
+  width: fit-content;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.CharDiv {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.CharEl {
+  display: flex;
+  flex-direction: column;
+  height: 30rem;
 }
