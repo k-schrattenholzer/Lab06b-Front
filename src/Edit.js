@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
-import { fetchQuotes } from './fetch-utils.js';
+import request from 'superagent';
 import './App.css'
 
-export default class Quotes extends Component {
+export default class Edit extends Component {
     state = {
             quotesArr:[],
         }
     
         componentDidMount = async () => {
+            const response = await request.get('https://katie-lab06b.herokuapp.com/quotes')
 
-            const response = await fetchQuotes();
-
-            this.setState({quotesArr: response})
-
+            this.setState({quotesArr: response.body})
     }
     render() {
-        
         return (
             <div className="QuoteDiv">
                 <h4>Quotes</h4>

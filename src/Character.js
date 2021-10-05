@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import request from 'superagent';
-import './App.css'
+import './App.css';
+import { fetchCharacters } from './fetch-utils.js';
 
 export default class Character extends Component {
     state = {
@@ -8,9 +9,8 @@ export default class Character extends Component {
         }
     
         componentDidMount = async () => {
-            const response = await request.get('https://katie-lab06b.herokuapp.com/characters')
-
-            this.setState({characters: response.body})
+            const response = await fetchCharacters();
+            this.setState({characters: response})
     }
     render() {
         return (
@@ -19,8 +19,8 @@ export default class Character extends Component {
                 this.state.characters
                 .map(char => 
                     <div className="CharEl">
-                        <span>{char.name}</span>
-                        <img src={char.img} alt={char.name}/>
+                        <span>{char.character_name}</span>
+                        <img src={char.img} alt={char.character_name}/>
                         <span>species: {char.species}</span>
                         <span>weapon of choice: {char.weapon}</span>
                         <span>age: {char.age}</span>

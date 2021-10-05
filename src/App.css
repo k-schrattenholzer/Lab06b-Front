@@ -28,6 +28,11 @@
   color: #61dafb;
 }
 
+.QCharImg {
+  width: 100px;
+  height: 150px;
+  object-fit: contain;
+}
 .QCharName {
   font-weight: bold;
 }
@@ -58,4 +63,8 @@ body {
   border-radius: 10%;
   padding: 1%;
   align-items: center;
+}
+
+.active-link {
+  background-color: sienna;
 }
