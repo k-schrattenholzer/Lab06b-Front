@@ -23,7 +23,7 @@ export default class Quotes extends Component {
                 {
                 this.state.quotesArr
                 .map(quote => 
-                    <Link to={`edit/${quote.id}`}>
+                    <Link to={`EditQuote/${quote.id}`}>
                         <div className="QuoteEl">
                             <img className="QCharImg" src={quote.img} alt={quote.character_name}/>
                             <span className="QCharName">{quote.character_name}: </span>

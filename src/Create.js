@@ -6,7 +6,8 @@ export default class Create extends Component {
     state = {
         character_list:[],
         quote: '',
-        character_select: ''
+        character_select: '',
+        character_name: ''
     }
     
     componentDidMount = async () => {
@@ -25,12 +26,25 @@ export default class Create extends Component {
 
         await createQuote(newQuote);
 
-        this.props.history.push('/')
+        this.props.history.push('/quotes')
+
+    }
+
+    handleSubmitCharacter= async e => {
+        e.preventDefault();
+
+        const newCharacter = {
+            character_name: this.state.character_select
+        }
+
+        await createQuote(newCharacter);
+
+        this.props.history.push('/EditCharacter/:')
 
     }
 
     render() {
-       
+       console.log(this.state.character_name)
         return ( 
             <div className="Create">
                 <div className="CreateQuote">
@@ -61,6 +75,24 @@ export default class Create extends Component {
                                 </select>
                         </label>
                         <button>
+                            Add
+                        </button>
+                    </form>
+                </div>
+                <div className="CreateCharacter">
+                    <h4>Add A SU Character</h4>
+                    <form 
+                    onSubmit={this.handleSubmitCharacter}
+                    >
+                        <label onChange={(e) => this.setState({ character_name: e.target.value })}>
+                            Character Name
+                            <input />
+                        </label>
+
+                        <button 
+                        // onClick={this.handleSubmitCharacter}
+                        // to="/CreateCharacter"
+                        >
                             Add
                         </button>
                     </form>

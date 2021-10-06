@@ -1,5 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&display=swap');
+
+:root{
+  --color1: #1F0C07;
+  --color2: #FB5B68;
+  --color3: #FFEB48;
+  --color4: #2676A1;
+  --color5: #FFBDB0;
+  --color6: #FA74BF;
+  --color6light: #f792cbd5;
+  --font:'Baloo Tamma 2', cursive;
+}
+
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -45,8 +59,13 @@ img {
 
 body {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
+  width: 100%;
+  font-family: var(--font);
+  align-content: stretch;
+  align-items: stretch;
+  text-decoration: none;
 }
 
 .CharDiv {
@@ -63,8 +82,38 @@ body {
   border-radius: 10%;
   padding: 1%;
   align-items: center;
+  font-size: .85rem;
+}
+header{
+  border: 1px solid black;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--color6);
+  color: white;
+  padding: .5em;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
+header >a{
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 2rem;
+  background-color: var(--color6light);
+  text-decoration: none;
+  
+}
 .active-link {
   background-color: sienna;
+}
+
+
+.AddQuoteInput {
+  width: 100%;
+  padding: 0.5em 1em;
+  color: #555;
+  border-radius: 2em;
+  outline: 0;
 }

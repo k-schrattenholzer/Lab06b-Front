@@ -23,7 +23,7 @@ export async function fetchCharacterInfo() {
 export async function fetchSingleCharacter(id) {
    const response = await request.get(`${URL}/character-info/${id}`);
 
-   return response.body;
+   return response.body[0];
 }
 
 export async function fetchSingleQuote(id) {
@@ -59,8 +59,15 @@ export async function updateQuote(id, newQuote) {
 }
 
 export async function createQuote(newQuote) {
-   const response = await request.post(`${URL}/quotes`)
+   const response = await request.post(`${URL}/character`)
    .send(newQuote);
+
+   return response.body;
+}
+
+export async function createCharacter(newCharacter) {
+   const response = await request.post(`${URL}/character`)
+   .send(newCharacter);
 
    return response.body;
 }

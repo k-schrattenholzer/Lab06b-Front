@@ -10,8 +10,10 @@ import {
 import Quotes from './Quotes.js';
 import Character from './Character.js';
 import Create from './Create.js';
-import Edit from './Edit.js';
+import EditQuote from './EditQuote.js';
+import CharacterSelect from './CharacterSelect.js';
 import Home from './Home.js';
+import EditCharacter from './EditCharacter.js';
 
 export default class App extends Component {
   render() {
@@ -19,10 +21,18 @@ export default class App extends Component {
               <div className="Main">
                       <Router>
                           <header>
-                              <NavLink exact activeClassName='active-link' to='/'>Home</NavLink>
-                              <NavLink exact activeClassName='active-link' to='/Characters'>Characters</NavLink>
-                              <NavLink exact activeClassName='active-link' to='/Quotes'>Quotes</NavLink>
-                              <NavLink exact activeClassName='active-link' to='/Create'>Create</NavLink>
+                              <NavLink
+                              className="NavLink"
+                              exact activeClassName='active-link' to='/'>Home</NavLink>
+                              <NavLink
+                              className="NavLink"
+                              exact activeClassName='active-link' to='/Characters'>Characters</NavLink>
+                              <NavLink
+                              className="NavLink"
+                              exact activeClassName='active-link' to='/Quotes'>Quotes</NavLink>
+                              <NavLink
+                              className="NavLink"
+                              exact activeClassName='active-link' to='/Create'>Create</NavLink>
                           </header>
                             <Switch>
                                   <Route 
@@ -42,9 +52,18 @@ export default class App extends Component {
                                     exact render={(routerProps) => <Create {...routerProps}/>} 
                                   />
                                   <Route 
-                                    path="/Edit/:id"
-                                    exact render={(routerProps) => <Edit {...routerProps}/>} 
+                                    path="/EditQuote/:id"
+                                    exact render={(routerProps) => <EditQuote {...routerProps}/>} 
                                   />
+                                  <Route 
+                                    path="/CharacterSelect/:id"
+                                    exact render={(routerProps) => <CharacterSelect {...routerProps}/>} 
+                                  />
+                                  <Route 
+                                    path="/EditCharacter/:id"
+                                    exact render={(routerProps) => <EditCharacter {...routerProps}/>} 
+                                  />
+                                  
                             </Switch>
                       </Router>
               </div>

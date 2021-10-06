@@ -3,14 +3,17 @@ import './App.css'
 import { updateQuote, fetchCharactersList, fetchSingleQuote } from './fetch-utils.js';
 
 
-export default class Create extends Component {
+export default class EditQuote extends Component {
     state = {
         character_list:[],
         quote: '',
         character_select: ''
     }
+
+    
     
     componentDidMount = async () => {
+        
         const charactersList = await fetchCharactersList();
         const quote = await fetchSingleQuote(this.props.match.params.id);
 
@@ -25,11 +28,13 @@ export default class Create extends Component {
         e.preventDefault();
 
         const newQuote = {
-            character_id: Number(this.state.character_select),
+            character_id: this.state.character_select,
             quote: this.state.quote
         }
 
         await updateQuote(this.props.match.params.id, newQuote);
+
+        this.props.history.push('/quotes')
 
     }
 
@@ -38,20 +43,24 @@ export default class Create extends Component {
         return ( 
             <div className="Create">
                 <div className="CreateQuote">
-                    <h4>Edit the Quote!</h4>
-                    <form onSubmit={this.handleSubmitQuote}>
+                    <h4>Edit the quote below:</h4>
+                    <p>"{this.state.quote}"</p>
+                    <form 
+                    onSubmit={this.handleSubmitQuote}>
                         <label >
                             Quote
-                            <input
+                            <textarea
                             onChange={(e) => this.setState({ quote: e.target.value })}
-                            defaultValue={this.state.quote} />
+                            defaultValue={this.state.quote}
+                            className="AddQuoteInput"
+                            type="text"/>
                         </label>
                         <label >
                             Character
                                 <select
-
                                     onChange={async (e) =>
                                         await this.setState({ character_select: e.target.value })}
+                                    defaultValue={this.state.quote}
                                 >
                                 {
                                     this.state.character_list
@@ -68,7 +77,7 @@ export default class Create extends Component {
                                 </select>
                         </label>
                         <button>
-                            Add
+                            Update
                         </button>
                     </form>
                 </div>

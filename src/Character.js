@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './App.css';
 import { fetchCharacterInfo } from './fetch-utils.js';
 
@@ -25,16 +26,18 @@ export default class Character extends Component {
                     img,
                     gem_type
                 })=> 
-                    <div 
-                    className="CharEl"
-                    key={`${character_id}`}>
-                        <span>{character_name}</span>
-                        <img src={img} alt={character_name}/>
-                        <span>species: {species}</span>
-                        <span>weapon of choice: {weapon}</span>
-                        <span>age: {age}</span>
-                        <span>gem type: {gem_type}</span>
-                    </div>
+                    <Link to={`CharacterSelect/${character_id}`} >
+                        <div 
+                        className="CharEl"
+                        key={`${character_id}`}>
+                            <span>{character_name}</span>
+                            <img src={img} alt={character_name}/>
+                            <span>species: {species}</span>
+                            <span>weapon of choice: {weapon}</span>
+                            <span>age: {age}</span>
+                            <span>gem type: {gem_type}</span>
+                        </div>
+                    </Link>
                     )}
             </div>
         )
