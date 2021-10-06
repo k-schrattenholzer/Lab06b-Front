@@ -1,13 +1,54 @@
 import request from "superagent"
 
+const URL = 'https://katie-lab06b.herokuapp.com'
+
 export async function fetchQuotes() {
-   const response = await request.get('https://katie-lab06b.herokuapp.com/quotes');
+   const response = await request.get(`${URL}/quotes`);
 
    return response.body;
 }
 
 export async function fetchCharacters() {
-   const response = await request.get('https://katie-lab06b.herokuapp.com/character-info');
+   const response = await request.get(`${URL}/character-info`);
 
    return response.body;
 }
+
+export async function fetchSingleCharacter(id) {
+   const response = await request.get(`${URL}/character-info/${id}`);
+
+   return response.body;
+}
+
+export async function fetchSingleQuote(id) {
+   const response = await request.get(`${URL}/quotes/${id}`);
+
+   return response.body;
+}
+
+export async function deleteQuote(id) {
+   const response = await request.delete(`${URL}/quotes/${id}`);
+
+   return response.body;
+}
+
+export async function deleteCharacter(id) {
+   const response = await request.delete(`${URL}/character-info/${id}`);
+
+   return response.body;
+}
+
+export async function updateCharacter(id, newCharacter) {
+   const response = await request.put(`${URL}/character-info/${id}`)
+   .send(newCharacter);
+
+   return response.body;
+}
+
+export async function updateQuote(id, newQuote) {
+   const response = await request.put(`${URL}/quotes/${id}`)
+   .send(newQuote);
+
+   return response.body;
+}
+

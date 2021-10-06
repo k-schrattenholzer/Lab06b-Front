@@ -30,3 +30,20 @@ test('gets all characters', async() => {
 
     expect(response[0]).toEqual(expectation);
 })
+
+// test('gets one character', async() => {
+//     const expectation = {
+//         age: expect.any(String),
+//         id: expect.any(Number),
+//         character_name: expect.any(String),
+//         character_id: expect.any(Number),
+//         gem_type: expect.any(String),
+//         weapon: expect.any(String),
+//         species: expect.any(String),
+//         img: expect.any(String)
+//     };
+
+//     const response = await fetchCharacters();
+
+//     expect(response[0]).toEqual(expectation);
+// })
