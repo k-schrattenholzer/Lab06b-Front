@@ -29,7 +29,7 @@ export async function fetchSingleCharacter(id) {
 export async function fetchSingleQuote(id) {
    const response = await request.get(`${URL}/quotes/${id}`);
 
-   return response.body;
+   return response.body[0];
 }
 
 export async function deleteQuote(id) {

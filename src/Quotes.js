@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { fetchQuotes } from './fetch-utils.js';
 import './App.css'
 
@@ -22,12 +23,14 @@ export default class Quotes extends Component {
                 {
                 this.state.quotesArr
                 .map(quote => 
-                    <div className="QuoteEl">
-                        <img className="QCharImg" src={quote.img} alt={quote.character_name}/>
-                        <span className="QCharName">{quote.character_name}: </span>
-                        <span className="QCharQuote">"{quote.quote}"</span>
-                        <hr />
-                    </div>
+                    <Link to={`edit/${quote.id}`}>
+                        <div className="QuoteEl">
+                            <img className="QCharImg" src={quote.img} alt={quote.character_name}/>
+                            <span className="QCharName">{quote.character_name}: </span>
+                            <span className="QCharQuote">"{quote.quote}"</span>
+                            <hr />
+                        </div>
+                    </Link>
                     )}
             </div>
         )

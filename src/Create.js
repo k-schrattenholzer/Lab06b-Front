@@ -25,6 +25,8 @@ export default class Create extends Component {
 
         await createQuote(newQuote);
 
+        this.props.history.push('/')
+
     }
 
     render() {
