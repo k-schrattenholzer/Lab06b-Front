@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './App.css'
-import { fetchCharactersList } from './fetch-utils.js';
+import { createQuote, fetchCharactersList } from './fetch-utils.js';
 
 export default class Create extends Component {
     state = {
         character_list:[],
         quote: '',
-        character_select: 1
+        character_select: ''
     }
     
     componentDidMount = async () => {
@@ -15,10 +15,16 @@ export default class Create extends Component {
         this.setState({character_list: charactersList})
     };
 
-    handleSubmit = e => {
+    handleSubmitQuote = async e => {
         e.preventDefault();
 
-        console.log(this.state)
+        const newQuote = {
+            character_id: this.state.character_select,
+            quote: this.state.quote
+        }
+
+        await createQuote(newQuote);
+
     }
 
     render() {
@@ -27,14 +33,17 @@ export default class Create extends Component {
             <div className="Create">
                 <div className="CreateQuote">
                     <h4>Add Your Fav SU Quote!</h4>
-                    <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={this.handleSubmitQuote}>
                         <label onChange={(e) => this.setState({ quote: e.target.value })}>
                             Quote
                             <input />
                         </label>
-                        <label onChange={(e) => this.setState({ character_select: e.target.value })}>
+                        <label >
                             Character
-                                <select>
+                                <select
+                                    onChange={async (e) =>
+                                        await this.setState({ character_select: e.target.value })}
+                                >
                                 {
                                     this.state.character_list
                                     .sort((a, b) => (a.character_name > b.character_name) ? 1 : -1)

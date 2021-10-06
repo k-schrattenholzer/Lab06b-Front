@@ -58,3 +58,10 @@ export async function updateQuote(id, newQuote) {
    return response.body;
 }
 
+export async function createQuote(newQuote) {
+   const response = await request.post(`${URL}/quotes`)
+   .send(newQuote);
+
+   return response.body;
+}
+
