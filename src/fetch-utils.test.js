@@ -1,4 +1,4 @@
-import { fetchCharacters, fetchQuotes } from "./fetch-utils.js";
+import { fetchCharacterInfo, fetchQuotes } from "./fetch-utils.js";
 
 test('gets all quotes', async() => {
     const expectation = {
@@ -26,7 +26,7 @@ test('gets all characters', async() => {
         img: expect.any(String)
     };
 
-    const response = await fetchCharacters();
+    const response = await fetchCharacterInfo();
 
     expect(response[0]).toEqual(expectation);
 })
@@ -43,7 +43,7 @@ test('gets all characters', async() => {
 //         img: expect.any(String)
 //     };
 
-//     const response = await fetchCharacters();
+//     const response = await fetchCharacterInfo();
 
 //     expect(response[0]).toEqual(expectation);
 // })

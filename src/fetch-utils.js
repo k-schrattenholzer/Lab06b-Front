@@ -8,7 +8,13 @@ export async function fetchQuotes() {
    return response.body;
 }
 
-export async function fetchCharacters() {
+export async function fetchCharactersList() {
+   const response = await request.get(`${URL}/characters`);
+
+   return response.body;
+}
+
+export async function fetchCharacterInfo() {
    const response = await request.get(`${URL}/character-info`);
 
    return response.body;
