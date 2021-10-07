@@ -49,10 +49,11 @@ export default class EditQuote extends Component {
     render() {
        console.log(this.state)
         return ( 
-            <div className="Create">
-                <div className="CreateQuote">
-                    <h4>Edit the quote below:</h4>
-                    <p>"{this.state.quote}"</p>
+                <div className="EditQuote">
+                    <span className="CurrentQuote">
+                        <h4>Edit the quote below:</h4>
+                        <p>"{this.state.quote}"</p>
+                    </span>
                     <form 
                     onSubmit={this.handleSubmitQuote}>
                         <label >
@@ -94,7 +95,6 @@ export default class EditQuote extends Component {
                         DELETE QUOTE
                     </button>
                 </div>
-            </div>
         )
     }
 }

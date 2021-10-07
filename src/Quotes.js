@@ -16,22 +16,24 @@ export default class Quotes extends Component {
 
     }
     render() {
-        
+
         return (
             <div className="QuoteDiv">
                 <h4>Quotes</h4>
-                {
-                this.state.quotesArr
-                .map(quote => 
-                    <Link to={`EditQuote/${quote.id}`}>
-                        <div className="QuoteEl">
-                            <img className="QCharImg" src={quote.img} alt={quote.character_name}/>
-                            <span className="QCharName">{quote.character_name}: </span>
-                            <span className="QCharQuote">"{quote.quote}"</span>
-                            <hr />
-                        </div>
-                    </Link>
-                    )}
+                <div className="QuoteList">
+                    {
+                    this.state.quotesArr
+                    .sort((a, b) => (a.character_name > b.character_name) ? 1 : -1)
+                    .map(quote => 
+                        <Link to={`EditQuote/${quote.id}`}>
+                            <div className="QuoteEl">
+                                <img className="QCharImg" src={quote.img} alt={quote.character_name}/>
+                                <span className="QCharName">{quote.character_name}: </span>
+                                <span className="QCharQuote">"{quote.quote}"</span>
+                            </div>
+                        </Link>
+                        )}
+                </div>
             </div>
         )
     }

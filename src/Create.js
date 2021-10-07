@@ -49,11 +49,15 @@ export default class Create extends Component {
         this.setState({character_list: updatedCharacterList});
 
         document.getElementById('AddCharacterForm').classList.remove('Hide');
-        document.getElementById('AddCharButton').classList.add('Hide')
+        document.getElementById('AddCharName').classList.add('Hide')
     }
     
     handleSubmitNewInfo = async e => {
         e.preventDefault();
+
+        const updatedCharacterList = await fetchCharactersList();
+
+        const newCharacterId = updatedCharacterList.find(character => character.character_name === this.state.character_name).foo  ;
 
         const newCharacter = {
             img: this.state.img,
@@ -61,24 +65,29 @@ export default class Create extends Component {
             gem_type: this.state.gem_type,
             weapon: this.state.weapon,
             age: this.state.age,
-            character_id: this.state.selected_char_id,
+            character_id: newCharacterId
         }
 
-        await updateCharacter(this.props.match.params.id, newCharacter);
+        await updateCharacter(newCharacterId, newCharacter);
 
-        this.props.history.push(`/CharacterSelect/${this.state.selected_char_id}`)
+        console.log(newCharacterId)
+        // this.props.history.push(`/CharacterSelect/${this.state.character_select}`
+        // )
 
     }
     render() {
        console.log(this.state)
         return ( 
             <div className="Create">
-                <div className="CreateQuote">
-                    <h4>Add Your Fav SU Quote!</h4>
-                    <form onSubmit={this.handleSubmitQuote}>
+                <div className="CreateEl CreateQuote">
+                    <h4>Add a Quote</h4>
+                    <form 
+                    onSubmit={this.handleSubmitQuote}
+                    className="QuoteInput"
+                    >
                         <label onChange={(e) => this.setState({ quote: e.target.value })}>
                             Quote
-                            <input />
+                            <textarea />
                         </label>
                         <label >
                             Character
@@ -105,10 +114,11 @@ export default class Create extends Component {
                         </button>
                     </form>
                 </div>
-                <div className="CreateCharacter">
-                    <h4>Add A SU Character</h4>
+                <div className="CreateEl CreateCharacter">
+                    <h4>Add a Character</h4>
                     <form 
                     onSubmit={this.handleSubmitCharacter}
+                    id="AddCharName"
                     >
                         <label onChange={(e) => this.setState({ character_name: e.target.value })}>
                             Character Name
@@ -118,7 +128,7 @@ export default class Create extends Component {
                         <button
                         id='AddCharButton'
                         >
-                            Add
+                            Add More Info
                         </button>
                     </form>
                 </div>
@@ -126,7 +136,7 @@ export default class Create extends Component {
                 <form 
                     onSubmit={this.handleSubmitNewInfo}
                     id="AddCharacterForm"
-                    className="Hide"
+                    className="AddChar Hide"
                     >
                         
                         <p>Image URL</p>
@@ -150,9 +160,8 @@ export default class Create extends Component {
                         onChange={(e) => this.setState({ gem_type: e.target.value })}
                         value={this.state.gem_type} />
 
-                        <button
-                        >
-                            Update
+                        <button >
+                            Add
                         </button>
                     </form>
                 </div>

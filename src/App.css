@@ -4,66 +4,25 @@
   --color1: #1F0C07;
   --color1light: #22130f9a;
   --color2: #FB5B68;
-  --color3: #FFEB48;
+  --color2trans: #f37782b0;
+  --color2dark: #c46068b0;
+  --color3: #e4d140e3;
   --color3warm: #d1a837;
   --color4: #2676A1;
   --color4light: #488aadde;
   --color5: #FFBDB0;
   --color5light: #fdcdc4ea;
+  --color5lighter:#f8d5cebd;
+  --color5lightest:#f5f0e7;
   --color6: #FA74BF;
   --color6light: #f792cbd5;
+  --color7: #9361a7;
   --font:'Baloo Tamma 2', cursive;
 }
 
-
-.QCharImg {
-  width: 100px;
-  height: 150px;
-  object-fit: contain;
-}
-.QCharName {
-  font-weight: bold;
-}
-
-img {
-  width: 200px;
-  height: 300px;
-  object-fit: contain;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 100%;
-  font-family: var(--font);
-  background-color: var(--color4light);
+a {
   text-decoration: none;
-}
-
-.CharDiv {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.CharEl {
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-  border: 1px dotted black;
-  border-radius: 10%;
-  padding: 1%;
-  font-size: .85rem;
-  background-color: var(--color2);
-  align-items: center;
-}
-
-.CharEl >span {
-  background-color: var(--color5light);
-  color: var(--color1);
-  
-
+  height: 100%;
 }
 
 header{
@@ -78,26 +37,227 @@ header{
   text-transform: uppercase;
 }
 
-header >a{
+body {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  font-family: var(--font);
+  background-color: var(--color4light);
+  text-decoration: none;
+}
+
+.NavLink {
   border: 1px solid black;
   font-size: 1rem;
   padding: 0rem 1rem;
   border-radius: 2rem;
   background-color: var(--color6);
   font-weight: bolder;
-  color: white;
+  color: var(--color5lightest);
   text-decoration: none;
   text-shadow: -.25px .25px 0 #000,
 				  .25px .25px 0 #000,
 				 .25px -.25px 0 #000,
 				-.25px -.25px 0 #000;
 }
-.active-link {
-  background-color: var(--color1light);
+
+.NavLink:hover {
+    background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+    animation: slidebg 5s linear infinite;
+}
+
+@keyframes slidebg {
+  to {
+    background-position:20vw;
+  }
+}
+
+img {
+  width: 200px;
+  height: 300px;
+  object-fit: contain;
+}
+
+.QuoteDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.QuoteList >a {
+  text-decoration: none;
+  height: min-content;
+  width: min-content;
+  margin: 1%;
+}
+
+.QuoteList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.QuoteEl {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border: 1em double var(--color1);
+  border-radius: 6em;
+  padding: 2.5%;
+  font-size: .85rem;
+  color: var(--color1);
+  background-color: var(--color2trans);
+  margin: 20px;
+  width: fit-content;
+  align-items: end;
+}
+
+.QCharImg {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+  margin: 0px;
+}
+.QCharName {
+  font-weight: bold;
+}
+
+.QCharQuote {
+  max-height: max-content;
+  width: 20em;
+  margin-left: 1em;
+}
+
+.CharDiv {
+  display: flex;
+  flex-wrap: wrap;
   
 }
 
+.CharEl {
+  display: flex;
+  flex-direction: column;
+  margin: .5em 2em;
+  border: 1em double var(--color1);
+  border-radius: 10%;
+  padding: 04%;
+  font-size: .85rem;
+  background-color: var(--color2trans);
+  align-items: center;
+  width: min-content;
+  height: min-content;
+  animation: slidebg 1s infinite linear alternate;
+}
 
+.CharEl:hover {
+  transform: scale(102%);
+  background-image: linear-gradient(90deg, var(--color4) 0%, var(--color3) 49%, var(--color2) 80%, var(--color4) 100%);
+}
+
+
+.StatsEl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  background-color: var(--color5lighter);
+  color: var(--color1);
+  border-radius: 4em;
+  padding: 1em;
+  justify-items: stretch;
+  width: 95%;
+  height: max-content;
+  
+}
+
+.StatSpan{
+  height: min-content;
+  width: 10em;
+  font-size: 14px;
+  border-radius: 2em;
+  background-color: var(--color5lighter);
+  border: 1px solid black;
+  display: flex;
+  padding: 0em 1em;
+  flex-direction: column;
+  margin: 2.5px;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.StatSpan >* {
+  margin:0;
+  padding: 0;
+}
+
+
+
+.CharacterName{
+  font-size: 1.5em;
+  background-color: var(--color5lighter);
+  color: var(--color1);
+  border-radius: 2em;
+  padding: .5em;
+}
+
+.active-link {
+  background-color: var(--color1light);
+  background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+  
+}
+
+.Create {
+  display: flex;
+  background-color: var(--color3warm);
+  padding: 0.5em 1em;
+  border-radius: 2em;
+}
+
+form >button {
+  border: 1px solid black;
+  font-size: .5rem;
+  padding: 0rem 1rem;
+  border-radius: 2rem;
+  background-color: var(--color7);
+  font-weight: bolder;
+  color: var(--color5lightest);
+  text-decoration: none;
+  text-shadow: -.25px .25px 0 #000,
+				  .25px .25px 0 #000,
+				 .25px -.25px 0 #000,
+				-.25px -.25px 0 #000;
+}
+
+form >button:hover{
+  transform: scale(130%);
+}
+
+h4 {
+  background-color: var(--color5lighter);
+  width: 100%;
+  text-align: center;
+  padding: 0.5em 1em;
+  border-radius: 2em;
+}
+
+.CreateEl {
+  padding: 1em;
+  margin: 10px;
+  border: 1px double var(--color1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0.5em 1em;
+  border-radius: 2em;
+}
+
+
+.CreateQuote {
+  background-color: var(--color2trans);
+}
+
+.CreateCharacter {
+  background-color: var(--color3);
+}
 .AddQuoteInput {
   width: 100%;
   padding: 0.5em 1em;
@@ -105,7 +265,17 @@ header >a{
   border-radius: 2em;
   outline: 0;
 }
-
+.QuoteInput{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .Hide {
   display: none;
+}
+
+.EditQuote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
