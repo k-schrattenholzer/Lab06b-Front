@@ -1,33 +1,26 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&display=swap');
+
+:root{
+  --color1: #1F0C07;
+  --color1light: #22130f9a;
+  --color2: #FB5B68;
+  --color3: #FFEB48;
+  --color3warm: #d1a837;
+  --color4: #2676A1;
+  --color4light: #488aadde;
+  --color5: #FFBDB0;
+  --color5light: #fdcdc4ea;
+  --color6: #FA74BF;
+  --color6light: #f792cbd5;
+  --font:'Baloo Tamma 2', cursive;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.QCharImg {
+  width: 100px;
+  height: 150px;
+  object-fit: contain;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 .QCharName {
   font-weight: bold;
 }
@@ -40,8 +33,12 @@ img {
 
 body {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
+  width: 100%;
+  font-family: var(--font);
+  background-color: var(--color4light);
+  text-decoration: none;
 }
 
 .CharDiv {
@@ -50,12 +47,65 @@ body {
 }
 
 .CharEl {
+  text-decoration: none;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   margin: 5px;
   border: 1px dotted black;
   border-radius: 10%;
   padding: 1%;
+  font-size: .85rem;
+  background-color: var(--color2);
   align-items: center;
+}
+
+.CharEl >span {
+  background-color: var(--color5light);
+  color: var(--color1);
+  
+
+}
+
+header{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--color4light);
+  color: white;
+  padding: .5em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+header >a{
+  border: 1px solid black;
+  font-size: 1rem;
+  padding: 0rem 1rem;
+  border-radius: 2rem;
+  background-color: var(--color6);
+  font-weight: bolder;
+  color: white;
+  text-decoration: none;
+  text-shadow: -.25px .25px 0 #000,
+				  .25px .25px 0 #000,
+				 .25px -.25px 0 #000,
+				-.25px -.25px 0 #000;
+}
+.active-link {
+  background-color: var(--color1light);
+  
+}
+
+
+.AddQuoteInput {
+  width: 100%;
+  padding: 0.5em 1em;
+  color: #555;
+  border-radius: 2em;
+  outline: 0;
+}
+
+.Hide {
+  display: none;
 }

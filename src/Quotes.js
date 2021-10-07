@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import request from 'superagent';
+import { Link } from 'react-router-dom';
+import { fetchQuotes } from './fetch-utils.js';
 import './App.css'
 
 export default class Quotes extends Component {
@@ -8,22 +9,28 @@ export default class Quotes extends Component {
         }
     
         componentDidMount = async () => {
-            const response = await request.get('https://katie-lab06b.herokuapp.com/quotes')
 
-            this.setState({quotesArr: response.body})
+            const response = await fetchQuotes();
+
+            this.setState({quotesArr: response})
+
     }
     render() {
+        
         return (
             <div className="QuoteDiv">
                 <h4>Quotes</h4>
                 {
                 this.state.quotesArr
                 .map(quote => 
-                    <div className="QuoteEl">
-                        <span className="QCharName">{quote.character}: </span>
-                        <span className="QCharQuote">"{quote.quote}"</span>
-                        <hr />
-                    </div>
+                    <Link to={`EditQuote/${quote.id}`}>
+                        <div className="QuoteEl">
+                            <img className="QCharImg" src={quote.img} alt={quote.character_name}/>
+                            <span className="QCharName">{quote.character_name}: </span>
+                            <span className="QCharQuote">"{quote.quote}"</span>
+                            <hr />
+                        </div>
+                    </Link>
                     )}
             </div>
         )

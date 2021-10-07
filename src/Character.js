@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import request from 'superagent';
-import './App.css'
+import { Link } from 'react-router-dom';
+import './App.css';
+import { fetchCharacterInfo } from './fetch-utils.js';
 
 export default class Character extends Component {
     state = {
@@ -8,24 +9,37 @@ export default class Character extends Component {
         }
     
         componentDidMount = async () => {
-            const response = await request.get('https://katie-lab06b.herokuapp.com/characters')
-
-            this.setState({characters: response.body})
+            const response = await fetchCharacterInfo();
+            this.setState({characters: response})
     }
     render() {
         return (
             <div className="CharDiv">
                 {
                 this.state.characters
-                .map(char => 
-                    <div className="CharEl">
-                        <span>{char.name}</span>
-                        <img src={char.img} alt={char.name}/>
-                        <span>species: {char.species}</span>
-                        <span>weapon of choice: {char.weapon}</span>
-                        <span>age: {char.age}</span>
-                        <span>gem type: {char.gem_type}</span>
-                    </div>
+                .map(({
+                    character_id,
+                    character_name,
+                    species,
+                    weapon,
+                    age,
+                    img,
+                    gem_type
+                })=> 
+                    <Link to={`CharacterSelect/${character_id}`} >
+                        <div 
+                        className="CharEl"
+                        key={`${character_id}`}>
+                            <span>{character_name}</span>
+                            <img src={img} alt={character_name}/>
+                            <div className="StatsEl">
+                                <span>species: {species}</span>
+                                <span>weapon of choice: {weapon}</span>
+                                <span>age: {age}</span>
+                                <span>gem type: {gem_type}</span>
+                            </div>
+                        </div>
+                    </Link>
                     )}
             </div>
         )
