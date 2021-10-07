@@ -12,8 +12,10 @@
   --color5: #FFBDB0;
   --color5light: #fdcdc4ea;
   --color5lighter:#f8d5cebd;
+  --color5lightest:#f5f0e7;
   --color6: #FA74BF;
   --color6light: #f792cbd5;
+  --color7: #9361a7;
   --font:'Baloo Tamma 2', cursive;
 }
 
@@ -44,20 +46,32 @@ body {
   text-decoration: none;
 }
 
-header >a{
+.NavLink {
   border: 1px solid black;
   font-size: 1rem;
   padding: 0rem 1rem;
   border-radius: 2rem;
   background-color: var(--color6);
   font-weight: bolder;
-  color: white;
+  color: var(--color5lightest);
   text-decoration: none;
   text-shadow: -.25px .25px 0 #000,
 				  .25px .25px 0 #000,
 				 .25px -.25px 0 #000,
 				-.25px -.25px 0 #000;
 }
+
+.NavLink:hover {
+    background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+    animation: slidebg 5s linear infinite;
+}
+
+@keyframes slidebg {
+  to {
+    background-position:20vw;
+  }
+}
+
 img {
   width: 200px;
   height: 300px;
@@ -80,12 +94,13 @@ img {
 .CharDiv {
   display: flex;
   flex-wrap: wrap;
+
 }
 
 .CharEl {
   display: flex;
   flex-direction: column;
-  margin: 5px 15px;
+  margin: .5em 2em;
   border: 1em double var(--color1);
   border-radius: 10%;
   padding: 04%;
@@ -100,7 +115,7 @@ img {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  background-color: var(--color5light);
+  background-color: var(--color5lighter);
   color: var(--color1);
   border-radius: 4em;
   padding: 1em;
@@ -134,7 +149,7 @@ img {
 
 .CharacterName{
   font-size: 1.5em;
-  background-color: var(--color5light);
+  background-color: var(--color5lighter);
   color: var(--color1);
   border-radius: 2em;
   padding: .5em;
@@ -142,6 +157,7 @@ img {
 
 .active-link {
   background-color: var(--color1light);
+  background: repeating-linear-gradient(var(--color1light), var(--color7) 20px, var(--color1light) 25px);
   
 }
 
