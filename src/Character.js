@@ -27,10 +27,11 @@ export default class Character extends Component {
                     img,
                     gem_type
                 })=> 
-                    <Link to={`CharacterSelect/${character_id}`} >
+                    <Link to={`CharacterSelect/${character_id}`}
+                    key={`${character_id}`} >
                         <div 
                         className="CharEl"
-                        key={`${character_id}`}>
+                        >
                             <span className="CharacterName">{character_name}</span>
                             <img src={img} alt={character_name}/>
                             <div className="StatsEl">

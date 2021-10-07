@@ -5,6 +5,7 @@
   --color1light: #22130f9a;
   --color2: #FB5B68;
   --color2trans: #f37782b0;
+  --color2dark: #c46068b0;
   --color3: #FFEB48;
   --color3warm: #d1a837;
   --color4: #2676A1;
@@ -94,7 +95,7 @@ img {
 .CharDiv {
   display: flex;
   flex-wrap: wrap;
-
+  
 }
 
 .CharEl {
@@ -109,7 +110,14 @@ img {
   align-items: center;
   width: min-content;
   height: min-content;
+  animation: slidebg 1s infinite linear alternate;
 }
+
+.CharEl:hover {
+  transform: scale(102%);
+  background-image: linear-gradient(90deg, var(--color4) 0%, var(--color3) 49%, var(--color2) 80%, var(--color4) 100%);
+}
+
 
 .StatsEl {
   display: grid;
@@ -157,7 +165,7 @@ img {
 
 .active-link {
   background-color: var(--color1light);
-  background: repeating-linear-gradient(var(--color1light), var(--color7) 20px, var(--color1light) 25px);
+  background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
   
 }
 
