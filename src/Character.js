@@ -32,10 +32,12 @@ export default class Character extends Component {
                         key={`${character_id}`}>
                             <span>{character_name}</span>
                             <img src={img} alt={character_name}/>
-                            <span>species: {species}</span>
-                            <span>weapon of choice: {weapon}</span>
-                            <span>age: {age}</span>
-                            <span>gem type: {gem_type}</span>
+                            <div className="StatsEl">
+                                <span>species: {species}</span>
+                                <span>weapon of choice: {weapon}</span>
+                                <span>age: {age}</span>
+                                <span>gem type: {gem_type}</span>
+                            </div>
                         </div>
                     </Link>
                     )}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css'
-import { updateQuote, fetchCharactersList, fetchSingleQuote } from './fetch-utils.js';
+import { updateQuote, fetchCharactersList, fetchSingleQuote, deleteQuote } from './fetch-utils.js';
 
 
 export default class EditQuote extends Component {
@@ -36,6 +36,14 @@ export default class EditQuote extends Component {
 
         this.props.history.push('/quotes')
 
+    }
+
+    handleDeleteQuote = async e => {
+        e.preventDefault();
+
+        await deleteQuote(this.props.match.params.id);
+
+        this.props.history.push(`/Quotes`)
     }
 
     render() {
@@ -77,9 +85,14 @@ export default class EditQuote extends Component {
                                 </select>
                         </label>
                         <button>
-                            Update
+                            UPDATE QUOTE
                         </button>
                     </form>
+                    <button
+                    onClick={this.handleDeleteQuote}
+                    >
+                        DELETE QUOTE
+                    </button>
                 </div>
             </div>
         )

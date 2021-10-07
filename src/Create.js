@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import './App.css'
-import { createQuote, fetchCharactersList } from './fetch-utils.js';
+import { createCharacter, createQuote, fetchCharactersList, updateCharacter } from './fetch-utils.js';
 
 export default class Create extends Component {
     state = {
         character_list:[],
         quote: '',
         character_select: '',
-        character_name: ''
+        character_name: '',
+        img: '',
+        species: '',
+        weapon:'',
+        age:'',
+        gem_type:''
     }
     
     componentDidMount = async () => {
@@ -32,19 +37,40 @@ export default class Create extends Component {
 
     handleSubmitCharacter= async e => {
         e.preventDefault();
-
+        
         const newCharacter = {
-            character_name: this.state.character_select
+            character_name: this.state.character_name
         }
 
-        await createQuote(newCharacter);
+        await createCharacter(newCharacter);
 
-        this.props.history.push('/EditCharacter/:')
+        const updatedCharacterList = await fetchCharactersList();
+
+        this.setState({character_list: updatedCharacterList});
+
+        document.getElementById('AddCharacterForm').classList.remove('Hide');
+        document.getElementById('AddCharButton').classList.add('Hide')
+    }
+    
+    handleSubmitNewInfo = async e => {
+        e.preventDefault();
+
+        const newCharacter = {
+            img: this.state.img,
+            species: this.state.species,
+            gem_type: this.state.gem_type,
+            weapon: this.state.weapon,
+            age: this.state.age,
+            character_id: this.state.selected_char_id,
+        }
+
+        await updateCharacter(this.props.match.params.id, newCharacter);
+
+        this.props.history.push(`/CharacterSelect/${this.state.selected_char_id}`)
 
     }
-
     render() {
-       console.log(this.state.character_name)
+       console.log(this.state)
         return ( 
             <div className="Create">
                 <div className="CreateQuote">
@@ -89,11 +115,44 @@ export default class Create extends Component {
                             <input />
                         </label>
 
-                        <button 
-                        // onClick={this.handleSubmitCharacter}
-                        // to="/CreateCharacter"
+                        <button
+                        id='AddCharButton'
                         >
                             Add
+                        </button>
+                    </form>
+                </div>
+                <div>
+                <form 
+                    onSubmit={this.handleSubmitNewInfo}
+                    id="AddCharacterForm"
+                    className="Hide"
+                    >
+                        
+                        <p>Image URL</p>
+                        <input 
+                        onChange={(e) => this.setState({ img: e.target.value })}
+                        value={this.state.img}/>
+                        <p>Species</p>
+                        <input 
+                        onChange={(e) => this.setState({ species: e.target.value })}
+                        value={this.state.species} />
+                        <p>Weapon</p>
+                        <input 
+                        onChange={(e) => this.setState({ weapon: e.target.value })}
+                        value={this.state.weapon}/>
+                        <p>Age</p>
+                        <input 
+                        onChange={(e) => this.setState({ age: e.target.value })}
+                        value={this.state.age} />
+                        <p>Gem Type</p>
+                        <input 
+                        onChange={(e) => this.setState({ gem_type: e.target.value })}
+                        value={this.state.gem_type} />
+
+                        <button
+                        >
+                            Update
                         </button>
                     </form>
                 </div>

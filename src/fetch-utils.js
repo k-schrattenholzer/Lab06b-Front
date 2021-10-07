@@ -72,3 +72,8 @@ export async function createCharacter(newCharacter) {
    return response.body;
 }
 
+// export async function createCharacterInfo(newCharacter, name) {
+//     const response = await request.post(`${URL}/character-info`)
+//     .send(newCharacter)
+// }
+

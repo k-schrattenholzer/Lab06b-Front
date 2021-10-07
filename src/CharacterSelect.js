@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './App.css'
-import { fetchCharactersList, fetchSingleCharacter } from './fetch-utils.js';
+import { deleteCharacter, fetchCharactersList, fetchSingleCharacter } from './fetch-utils.js';
 
 
 export default class CharacterSelect extends Component {
@@ -13,7 +13,8 @@ export default class CharacterSelect extends Component {
         age:'',
         img:'',
         gem_type:'',
-        selected_character: ''
+        selected_character: '',
+        selected_id:''
     }
     
     componentDidMount = async () => {
@@ -35,6 +36,14 @@ export default class CharacterSelect extends Component {
         })
     };
 
+    handleDeleteCharacter = async e => {
+        e.preventDefault();
+
+        await deleteCharacter(this.state.selected_id);
+
+        this.props.history.push(`/Characters`)
+    }
+
     render() {
 
         return ( 
@@ -51,7 +60,7 @@ export default class CharacterSelect extends Component {
                 </div>
                 <div>
                     <Link to={`/EditCharacter/${this.state.selected_id}`}>Edit</Link>
-                    <button onClick={this.handleSubmitQuote}>Delete</button>
+                    <button onClick={this.handleDeleteCharacter}>Delete</button>
                 </div>
             </div>
         )
