@@ -17,6 +17,7 @@ export default class Character extends Component {
             <div className="CharDiv">
                 {
                 this.state.characters
+                .sort((a, b) => (a.character_name > b.character_name) ? 1 : -1)
                 .map(({
                     character_id,
                     character_name,

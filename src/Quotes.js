@@ -16,12 +16,13 @@ export default class Quotes extends Component {
 
     }
     render() {
-        
+
         return (
             <div className="QuoteDiv">
                 <h4>Quotes</h4>
                 {
                 this.state.quotesArr
+                .sort((a, b) => (a.character_name > b.character_name) ? 1 : -1)
                 .map(quote => 
                     <Link to={`EditQuote/${quote.id}`}>
                         <div className="QuoteEl">
