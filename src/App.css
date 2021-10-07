@@ -4,66 +4,22 @@
   --color1: #1F0C07;
   --color1light: #22130f9a;
   --color2: #FB5B68;
+  --color2trans: #f37782b0;
   --color3: #FFEB48;
   --color3warm: #d1a837;
   --color4: #2676A1;
   --color4light: #488aadde;
   --color5: #FFBDB0;
   --color5light: #fdcdc4ea;
+  --color5lighter:#f8d5cebd;
   --color6: #FA74BF;
   --color6light: #f792cbd5;
   --font:'Baloo Tamma 2', cursive;
 }
 
-
-.QCharImg {
-  width: 100px;
-  height: 150px;
-  object-fit: contain;
-}
-.QCharName {
-  font-weight: bold;
-}
-
-img {
-  width: 200px;
-  height: 300px;
-  object-fit: contain;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 100%;
-  font-family: var(--font);
-  background-color: var(--color4light);
+a {
   text-decoration: none;
-}
-
-.CharDiv {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.CharEl {
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-  border: 1px dotted black;
-  border-radius: 10%;
-  padding: 1%;
-  font-size: .85rem;
-  background-color: var(--color2);
-  align-items: center;
-}
-
-.CharEl >span {
-  background-color: var(--color5light);
-  color: var(--color1);
-  
-
+  height: 100%;
 }
 
 header{
@@ -76,6 +32,16 @@ header{
   padding: .5em;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  font-family: var(--font);
+  background-color: var(--color4light);
+  text-decoration: none;
 }
 
 header >a{
@@ -92,6 +58,88 @@ header >a{
 				 .25px -.25px 0 #000,
 				-.25px -.25px 0 #000;
 }
+img {
+  width: 200px;
+  height: 300px;
+  object-fit: contain;
+}
+
+
+
+.QCharImg {
+  width: 100px;
+  height: 150px;
+  object-fit: contain;
+}
+.QCharName {
+  font-weight: bold;
+}
+
+
+
+.CharDiv {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.CharEl {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 15px;
+  border: 1em double var(--color1);
+  border-radius: 10%;
+  padding: 04%;
+  font-size: .85rem;
+  background-color: var(--color2trans);
+  align-items: center;
+  width: min-content;
+  height: min-content;
+}
+
+.StatsEl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  background-color: var(--color5light);
+  color: var(--color1);
+  border-radius: 4em;
+  padding: 1em;
+  justify-items: stretch;
+  width: 95%;
+  height: max-content;
+  
+}
+
+.StatSpan{
+  height: min-content;
+  width: 10em;
+  font-size: 14px;
+  border-radius: 2em;
+  background-color: var(--color5lighter);
+  border: 1px solid black;
+  display: flex;
+  padding: 0em 1em;
+  flex-direction: column;
+  margin: 2.5px;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.StatSpan >* {
+  margin:0;
+  padding: 0;
+}
+
+
+
+.CharacterName{
+  font-size: 1.5em;
+  background-color: var(--color5light);
+  color: var(--color1);
+  border-radius: 2em;
+  padding: .5em;
+}
+
 .active-link {
   background-color: var(--color1light);
   
