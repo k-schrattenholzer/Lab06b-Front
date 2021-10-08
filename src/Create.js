@@ -57,7 +57,7 @@ export default class Create extends Component {
 
         const updatedCharacterList = await fetchCharactersList();
 
-        const newCharacterId = updatedCharacterList.find(character => character.character_name === this.state.character_name).foo  ;
+        const newCharacterId = updatedCharacterList.find(character => character.character_name === this.state.character_name);
 
         const newCharacter = {
             img: this.state.img,

@@ -58,8 +58,9 @@ export default class CharacterSelect extends Component {
                     <span>age: {this.state.age}</span>
                     <span>gem type: {this.state.gem_type}</span>
                 </div>
-                <div>
-                    <Link to={`/EditCharacter/${this.state.selected_id}`}>Edit</Link>
+                <div
+                className="Buttons">
+                    <button><Link to={`/EditCharacter/${this.state.selected_id}`}>Edit</Link></button>
                     <button onClick={this.handleDeleteCharacter}>Delete</button>
                 </div>
             </div>
