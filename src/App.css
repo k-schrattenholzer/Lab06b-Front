@@ -133,7 +133,14 @@ img {
   
 }
 
-.CharEl {
+.SelectChar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.CharEl, .SelectedCharEl {
   display: flex;
   flex-direction: column;
   margin: .5em 2em;
@@ -153,6 +160,27 @@ img {
   background-image: linear-gradient(90deg, var(--color4) 0%, var(--color3) 49%, var(--color2) 80%, var(--color4) 100%);
 }
 
+.Buttons {
+  display: flex;
+  border: .5em double var(--color1);
+  border-radius: 10%;
+  background-color: var(--color2trans);
+}
+
+.Buttons >button {
+  display: inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid #FFFFFF;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family: var(--font);
+  font-weight:300;
+  color:#FFFFFF;
+  text-align:center;
+  transition: all 0.2s;
+}
 
 .StatsEl {
   display: grid;
